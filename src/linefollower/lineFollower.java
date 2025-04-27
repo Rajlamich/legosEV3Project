@@ -118,7 +118,7 @@ public class lineFollower {
         return sample[0];
     }
 
-    // Pause execution (milliseconds)
+    // Pause execution 
     private void sleep(int millis) {
         try {
             Thread.sleep(millis);
