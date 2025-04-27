@@ -7,34 +7,39 @@ import lejos.hardware.sensor.EV3UltrasonicSensor;
 import lejos.robotics.RegulatedMotor;
 import lejos.robotics.SampleProvider;
 
-public class Straightline {
+public class lineFollower {
 
-    // Motors
+    // Hom Bahadur & Bishnu.
+    // Motors Connection
     private final RegulatedMotor leftMotor = Motor.A;
     private final RegulatedMotor rightMotor = Motor.B;
 
-    // Sensors
-    private final EV3ColorSensor colorSensor = new EV3ColorSensor(SensorPort.S1); // Line sensor
-    private final EV3UltrasonicSensor ultrasonicSensor = new EV3UltrasonicSensor(SensorPort.S2); // Obstacle sensor
+    // Sensors Connection
+    private final EV3ColorSensor colorSensor = new EV3ColorSensor(SensorPort.S1); // Sensor 1 is used as light sensor.
+    private final EV3UltrasonicSensor ultrasonicSensor = new EV3UltrasonicSensor(SensorPort.S2); // Sensor 2 is used for
+                                                                                                 // object
+                                                                                                 // detection.(Ultrasonic
+                                                                                                 // sensor)
 
+    // starting the robot to execute the follwong program made by our group.
     public static void main(String[] args) {
-        Straightline robot = new Straightline();
-        robot.run(); // Start the robot
+        lineFollower robot = new lineFollower();
+        robot.run();
     }
 
     public void run() {
-        // Main loop (runs forever until manually stopped)
+        // Main loop. We have made infinite loop so until we manually stops the robot it
+        // runs.
         while (true) {
-            // 1. Follow the line
             followLine();
 
-            // 2. Check for obstacles
             if (isObstacleDetected()) {
                 avoidObstacle();
             }
         }
     }
 
+    // Raj did the line following and obstacle detection.
     // Basic line-following logic
     private void followLine() {
         float intensity = readColorSensor();
@@ -76,7 +81,7 @@ public class Straightline {
         rightMotor.setSpeed(300);
         leftMotor.forward();
         rightMotor.forward();
-        sleep(3000);
+        sleep(3000); // small break.
 
         // 4. Turn right to realign
         leftMotor.rotate(180, true);
@@ -93,13 +98,10 @@ public class Straightline {
 
         // Keep checking until the line is found
         while (readColorSensor() > 0.3) { // While not on the line
-            sleep(50); // Small delay to avoid CPU overload
+            sleep(50); // Small delay
         }
-
-        // Line found! Resume normal following
     }
 
-    // Read the color sensor (0 = black, 1 = white)
     private float readColorSensor() {
         SampleProvider color = colorSensor.getRedMode();
         float[] sample = new float[color.sampleSize()];
