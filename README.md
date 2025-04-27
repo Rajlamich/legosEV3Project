@@ -13,3 +13,8 @@ Bishnu Chaudhary
 Hom Bahadur Adhikari
 
           I did assembling the necessary hardware, all sensors and motors were connected, wired, and functioning. The color sensor and ultrasonic sensor worked and helped troubleshoot problems and assist with coding.
+
+
+Introduction:
+
+The program utilizes the run() function to continuously command the robot. It travels down a line by means of the color sensor, adjusting course where necessary. Whenever an object is detected by the ultrasonic sensor, the robot performs an obstacle avoidance routine that includes stopping, turning, and aligning to resensor the line. The loop of the run() function continually executes these operations until the robot is manually stopped.
