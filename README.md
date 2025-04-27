@@ -11,3 +11,5 @@ Bishnu Chaudhary
 
 
 Hom Bahadur Adhikari
+
+          I did hardware connection making sure every sensors and motors are working. also verified light sensor and ultrasonic sensors are working. and helped in fixing code.
