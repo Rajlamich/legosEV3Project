@@ -39,7 +39,8 @@ public class lineFollower {
         }
     }
 
-    // Raj did the line following and obstacle detection.
+    // Raj did the line following and obstacle detection. and everyone fixed and
+    // made final code.
     // Basic line-following logic
     private void followLine() {
         float intensity = readColorSensor();
