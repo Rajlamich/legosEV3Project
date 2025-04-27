@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<project name="LegoLineFollowerSimple" basedir="." default="jar">
+
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="init">
+        <mkdir dir="${build.dir}"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <jar destfile="LegoLineFollowerSimple.jar" basedir="${build.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="Main"/>
+            </manifest>
+        </jar>
+    </target>
+
+</project>
